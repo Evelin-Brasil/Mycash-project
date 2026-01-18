@@ -9,7 +9,7 @@ O **MyCash+** é um dashboard interativo desenvolvido para facilitar o controle 
 Este projeto demonstra competências em desenvolvimento **Front-end Moderno**, integração com **APIs/Banco de Dados** e construção de layouts responsivos complexos.
 
 ## 🚀 Tecnologias Utilizadas
-
+   Figma para toda a primeira parte dos wireframes e protótipos iniciais.
 *   **⚛️ React.js (Vite)**: Framework principal para construção da interface.
 *   **🔷 TypeScript**: Para tipagem estática e segurança do código.
 *   **🎨 TailwindCSS**: Para estilização rápida, responsiva e efeitos visuais modernos (Blur, Gradients).
