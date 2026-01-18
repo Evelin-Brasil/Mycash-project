@@ -10,6 +10,7 @@ Este projeto demonstra competências em desenvolvimento **Front-end Moderno**, i
 
 ## 🚀 Tecnologias Utilizadas
    Figma para toda a primeira parte dos wireframes e protótipos iniciais.
+   Ferramenta Antigravity do Google para gerar códigos e melhorar a interface e implementar bibliotecas.
 *   **⚛️ React.js (Vite)**: Framework principal para construção da interface.
 *   **🔷 TypeScript**: Para tipagem estática e segurança do código.
 *   **🎨 TailwindCSS**: Para estilização rápida, responsiva e efeitos visuais modernos (Blur, Gradients).
