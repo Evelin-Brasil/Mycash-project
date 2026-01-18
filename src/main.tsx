@@ -2,9 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import { FinanceProvider } from './contexts/FinanceContext'
 
 ReactDOM.createRoot(document.getElementById('app')!).render(
     <React.StrictMode>
-        <App />
+        <FinanceProvider>
+            <App />
+        </FinanceProvider>
     </React.StrictMode>,
 )
