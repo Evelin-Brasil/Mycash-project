@@ -30,11 +30,13 @@ export function BalanceCards() {
                     </div>
                 </div>
 
-                <div className="relative z-10 mt-6">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/5">
-                        <IncreaseIcon size={14} className="text-primary" />
-                        <span className="text-xs font-bold text-white">+12% esse mês</span>
-                    </div>
+                <div className="relative z-10 mt-6 h-8">
+                    {balance !== 0 && (
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/5 animate-fade-in">
+                            <IncreaseIcon size={14} className="text-primary" />
+                            <span className="text-xs font-bold text-white">+12% esse mês</span>
+                        </div>
+                    )}
                 </div>
             </div>
 
