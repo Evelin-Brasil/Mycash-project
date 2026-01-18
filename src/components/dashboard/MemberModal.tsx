@@ -29,9 +29,11 @@ export function MemberModal({ isOpen, onClose }: MemberModalProps) {
         }
     }, [isOpen]);
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     if (!isOpen) return null;
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (name.length < 3) {
             alert('Por favor, insira um nome válido (mínimo 3 caracteres).');
             return;
@@ -41,14 +43,21 @@ export function MemberModal({ isOpen, onClose }: MemberModalProps) {
             return;
         }
 
-        addMember({
-            name,
-            role,
-            avatarUrl: avatarUrl || `https://i.pravatar.cc/150?u=${name.replace(/\s/g, '')}`,
-            monthlyIncome: monthlyIncome ? parseFloat(monthlyIncome) : undefined
-        });
-
-        onClose();
+        try {
+            setIsSubmitting(true);
+            await addMember({
+                name,
+                role,
+                avatarUrl: avatarUrl || `https://i.pravatar.cc/150?u=${name.replace(/\s/g, '')}`,
+                monthlyIncome: monthlyIncome ? parseFloat(monthlyIncome) : 0
+            });
+            onClose();
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao salvar membro. Tente novamente.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -168,9 +177,16 @@ export function MemberModal({ isOpen, onClose }: MemberModalProps) {
                     </button>
                     <button
                         onClick={handleSave}
-                        className="px-8 py-4 rounded-full bg-text-main text-white font-black shadow-xl shadow-black/10 hover:bg-gray-800 transition-all active:scale-95 flex items-center gap-2"
+                        disabled={isSubmitting}
+                        className="px-8 py-4 rounded-full bg-text-main text-white font-black shadow-xl shadow-black/10 hover:bg-gray-800 transition-all active:scale-95 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <Check size={18} /> Adicionar Membro
+                        {isSubmitting ? (
+                            <>Salvando...</>
+                        ) : (
+                            <>
+                                <Check size={18} /> Adicionar Membro
+                            </>
+                        )}
                     </button>
                 </div>
             </div>
