@@ -1,3 +1,9 @@
+-- RESET SCRIPT (Run this if you want to wipe everything and start fresh)
+drop table if exists transactions;
+drop table if exists accounts;
+drop table if exists family_members;
+drop table if exists goals;
+
 -- Enable UUID extension
 create extension if not exists "uuid-ossp";
 
@@ -55,19 +61,18 @@ create table goals (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- Insert Mock Data (Optional - to match current state)
-
--- Insert a default user
-INSERT INTO family_members (name, role, monthly_income)
-VALUES ('Alex Silva', 'Admin', 9000);
-
--- Enable Row Level Security (RLS) - Recommended
+-- Enable Row Level Security (RLS)
 alter table family_members enable row level security;
 alter table accounts enable row level security;
 alter table transactions enable row level security;
 alter table goals enable row level security;
 
--- Create policies (Open for public for now for ease of prototype, restrict later!)
+-- Create policies (Clean up old policies first if re-running)
+drop policy if exists "Enable all access for all users" on family_members;
+drop policy if exists "Enable all access for all users" on accounts;
+drop policy if exists "Enable all access for all users" on transactions;
+drop policy if exists "Enable all access for all users" on goals;
+
 create policy "Enable all access for all users" on family_members for all using (true);
 create policy "Enable all access for all users" on accounts for all using (true);
 create policy "Enable all access for all users" on transactions for all using (true);

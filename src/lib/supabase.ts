@@ -15,6 +15,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
 // We use the non-null assertion or fallback to empty string to satisfy TS, 
 // but the warning above handles the DX.
 export const supabase = createClient(
-    supabaseUrl || '',
-    supabaseAnonKey || ''
+    supabaseUrl || 'https://placeholder.supabase.co',
+    supabaseAnonKey || 'placeholder-key'
 );
